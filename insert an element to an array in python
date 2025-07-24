@@ -1,0 +1,7 @@
+arr = [1, 2, 4, 5]
+position = 2
+element = 3
+
+arr.insert(position, element)
+
+print("Array after insertion:", arr)
