@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int array[] = {12, 5, 8, 20, 7};
+    int n = sizeof(array) / sizeof(array[0]); // Number of elements
+    int max = array[0]; // Assume first is max
+
+    for (int i = 1; i < n; i++) {
+        if (array[i] > max) {
+            max = array[i];
+        }
+    }
+
+    printf("Maximum element: %d\n", max);
+
+    return 0;
+}
