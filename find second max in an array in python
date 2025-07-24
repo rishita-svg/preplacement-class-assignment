@@ -1,0 +1,9 @@
+arr = [12, 35, 1, 10, 34, 1]
+
+unique_arr = list(set(arr))
+unique_arr.sort(reverse=True)
+
+if len(unique_arr) >= 2:
+    print("Second maximum element:", unique_arr[1])
+else:
+    print("No second maximum element.")
