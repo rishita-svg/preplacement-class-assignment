@@ -1,0 +1,11 @@
+def is_sparse(matrix):
+    zero_count = 0
+    total = 0
+    for row in matrix:
+        for val in row:
+            total += 1
+            if val == 0:
+                zero_count += 1
+            if total - zero_count > total // 2:
+                return False  # Already more non-zeros
+    return True
