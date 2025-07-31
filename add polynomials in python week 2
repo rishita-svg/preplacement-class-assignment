@@ -1,0 +1,15 @@
+def add_polynomials(a, b):
+    max_len = max(len(a), len(b))
+    result = [0] * max_len
+
+    for i in range(max_len):
+        coeff_a = a[i] if i < len(a) else 0
+        coeff_b = b[i] if i < len(b) else 0
+        result[i] = coeff_a + coeff_b
+
+    return result
+
+if __name__ == "__main__":
+    # Input as coefficient list: index = exponent
+    # Example: 5x^2 + 4x + 2 => [2, 4, 5]
+    a =
