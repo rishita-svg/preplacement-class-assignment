@@ -1,0 +1,40 @@
+def multiply_poly_dict(poly1, poly2):
+    result = {}
+
+    for exp1, coeff1 in poly1.items():
+        for exp2, coeff2 in poly2.items():
+            exp = exp1 + exp2
+            coeff = coeff1 * coeff2
+            if exp in result:
+                result[exp] += coeff
+            else:
+                result[exp] = coeff
+
+    result = {exp: c for exp, c in result.items() if c != 0}
+    return result
+
+def format_poly_dict(poly):
+   
+    if not poly:
+        return "0"
+    terms = []
+    for exp in sorted(poly.keys(), reverse=True):
+        coeff = poly[exp]
+        if exp == 0:
+            terms.append(f"{coeff}")
+        elif exp == 1:
+            terms.append(f"{coeff}x")
+        else:
+            terms.append(f"{coeff}x^{exp}")
+    return " + ".join(terms)
+
+if __name__ == "__main__":
+    poly1 = {2: 3, 1: 2, 0: 1}
+    poly2 = {1: 5, 0: 4}
+
+    result = multiply_poly_dict(poly1, poly2)
+
+    print("Resultant Polynomial Coefficients:")
+    print(result)
+    print("Formatted Polynomial:")
+    print(format_poly_dict(result))
