@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_N 100000
+
+typedef struct {
+    int *data;
+    int size;
+    int capacity;
+} Sequence;
+
+void append(Sequence *seq, int value) {
+    if (seq->size == seq->capacity) {
+        seq->capacity = seq->capacity == 0 ? 1 : seq->capacity * 2;
+        seq->data = realloc(seq->data, seq->capacity * sizeof(int));
+    }
+    seq->data[seq->size++] = value;
+}
+
+int main() {
+    int n, q;
+    scanf("%d %d", &n, &q);
+
+    Sequence *seqList = calloc(n, sizeof(Sequence));
+    int lastAnswer = 0;
+
+    for (int i = 0; i < q; i++) {
+        int type, x, y;
+        scanf("%d %d %d", &type, &x, &y);
+
+        int idx = (x ^ lastAnswer) % n;
+
+        if (type == 1) {
+            append(&seqList[idx], y);
+        } else if (type == 2) {
+            int pos = y % seqList[idx].size;
+            lastAnswer = seqList[idx].data[pos];
+            printf("%d\n", lastAnswer);
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        free(seqList[i].data);
+    }
+    free(seqList);
+
+    return 0;
+}
