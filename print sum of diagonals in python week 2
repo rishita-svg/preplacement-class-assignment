@@ -1,0 +1,5 @@
+def diagonalSum(N, M):
+    total = 0
+    for i in range(N):
+        total += M[i][i]
+    return total
