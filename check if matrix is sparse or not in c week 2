@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int isSparse(int matrix[][1000], int n, int m) {
+    int zeroCount = 0;
+    int total = n * m;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (matrix[i][j] == 0)
+                zeroCount++;
+
+            if (total - zeroCount > total / 2)
+                return 0;  // Not sparse
+        }
+    }
+
+    return 1;  // Sparse
+}
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+
+    int matrix[1000][1000];  //
